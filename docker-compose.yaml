@@ -17,6 +17,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./homarr/appdata:/home/homepage/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - "7575:7575"
     environment:
