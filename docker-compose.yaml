@@ -1,16 +1,4 @@
 services:
-  n8n:
-    container_name: N8N
-    image: n8nio/n8n:latest
-    ports:
-      - "5678:5678"
-    volumes:
-      - n8n_data:/home/node/.n8n
-    environment:
-      - GENERIC_TIMEZONE=America/Sao_Paulo
-      - TZ=America/Sao_Paulo
-      - N8N_SECURE_COOKIE=false
-
   homepage:
     container_name: homarr
     image: ghcr.io/homarr-labs/homarr:latest
@@ -21,7 +9,29 @@ services:
     ports:
       - "7575:7575"
     environment:
-      - SECRET_ENCRYPTION_KEY=
+      - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_KEY}
+
+  dashdot:
+      image: maicoded/dashdot:latest
+      container_name: dashdot
+      restart: unless-stopped
+      privileged: true
+      ports:
+        - "3001:3001"
+      volumes:
+        - /:/mnt/host:ro
+
+  n8n:
+    container_name: N8N
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    environment:
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - TZ=${TZ}
+      - N8N_SECURE_COOKIE=false
 
 volumes:
   n8n_data: {}
