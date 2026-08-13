@@ -12,14 +12,28 @@ services:
       - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_KEY}
 
   dashdot:
-      image: mauricenino/dashdot:latest
-      container_name: dashdot
-      restart: unless-stopped
-      privileged: true
-      ports:
-        - "80:3001"
-      volumes:
-        - /:/mnt/host:ro
+    container_name: dashdot
+    image: mauricenino/dashdot:latest
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "3001:3001"
+    volumes:
+      - /:/mnt/host:ro
+
+  nextcloud:
+    container_name: nextcloud
+    image: ghcr.io/nextcloud-releases/all-in-one:latest
+    init: true
+    restart: always
+    command: --sig-proxy=false
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   n8n:
     container_name: N8N
@@ -35,3 +49,4 @@ services:
 
 volumes:
   n8n_data: {}
+  nextcloud_aio_mastercontainer: {}
