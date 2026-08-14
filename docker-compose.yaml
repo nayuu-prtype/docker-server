@@ -21,8 +21,8 @@ services:
     volumes:
       - /:/mnt/host:ro
 
-  nextcloud:
-    container_name: nextcloud
+  nextcloud-aio-mastercontainer:
+    container_name: nextcloud-aio-mastercontainer
     image: ghcr.io/nextcloud-releases/all-in-one:latest
     init: true
     restart: always
