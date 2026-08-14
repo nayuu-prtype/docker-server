@@ -1,6 +1,6 @@
 services:
-  homepage:
-    container_name: homarr
+  homarr:
+    container_name: Homarr
     image: ghcr.io/homarr-labs/homarr:latest
     restart: unless-stopped
     volumes:
@@ -12,7 +12,7 @@ services:
       - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_KEY}
 
   dashdot:
-    container_name: dashdot
+    container_name: Dashdot
     image: mauricenino/dashdot:latest
     restart: unless-stopped
     privileged: true
@@ -20,19 +20,6 @@ services:
       - "3001:3001"
     volumes:
       - /:/mnt/host:ro
-
-  nextcloud-aio-mastercontainer:
-    container_name: nextcloud-aio-mastercontainer
-    image: ghcr.io/nextcloud-releases/all-in-one:latest
-    init: true
-    restart: always
-    ports:
-      - "80:80"
-      - "8080:8080"
-      - "8443:8443"
-    volumes:
-      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
-      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   n8n:
     container_name: N8N
@@ -48,5 +35,3 @@ services:
 
 volumes:
   n8n_data: {}
-  nextcloud_aio_mastercontainer:
-    name: nextcloud_aio_mastercontainer
