@@ -48,4 +48,5 @@ services:
 
 volumes:
   n8n_data: {}
-  nextcloud_aio_mastercontainer: {}
+  nextcloud_aio_mastercontainer:
+    name: nextcloud_aio_mastercontainer
