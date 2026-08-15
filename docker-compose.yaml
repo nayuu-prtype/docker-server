@@ -9,7 +9,7 @@ services:
     ports:
       - "7575:7575"
     environment:
-      - SECRET_ENCRYPTION_KEY=${SECRET_KEY}
+      - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_KEY}
 
   dashdot:
     container_name: Dashdot
@@ -34,12 +34,13 @@ services:
       - OC_INSECURE=true
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - OC_URL=http://homelab:9200
-      - IDM_ADMIN_PASSWORD={ADMIN_PASSWORD}
-      - OC_JWT_SECRET=${SECRET_KEY}
+      - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - OC_JWT_SECRET=${OPENCLOUD_SECRET_KEY}
 
   n8n:
     container_name: N8N
     image: n8nio/n8n:latest
+    restart: unless-stopped
     ports:
       - "5678:5678"
     volumes:
