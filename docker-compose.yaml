@@ -9,7 +9,7 @@ services:
     ports:
       - "7575:7575"
     environment:
-      - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_KEY}
+      - SECRET_ENCRYPTION_KEY=${SECRET_KEY}
 
   dashdot:
     container_name: Dashdot
@@ -35,6 +35,7 @@ services:
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - OC_URL=http://homelab:9200
       - IDM_ADMIN_PASSWORD={ADMIN_PASSWORD}
+      - OC_JWT_SECRET=${SECRET_KEY}
 
   n8n:
     container_name: N8N
