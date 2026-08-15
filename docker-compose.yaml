@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./homarr/appdata:/home/homepage/data
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "7575:7575"
     environment:
@@ -20,6 +20,21 @@ services:
       - "3001:3001"
     volumes:
       - /:/mnt/host:ro
+
+  opencloud:
+    container_name: OpenCloud
+    image: opencloudeu/opencloud-rolling:latest
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+    volumes:
+      - $HOME/opencloud/opencloud-config:/etc/opencloud
+      - $HOME/opencloud/opencloud-data:/var/lib/opencloud
+    environment:
+      - OC_INSECURE=true
+      - PROXY_HTTP_ADDR=0.0.0.0:9200
+      - OC_URL=http://homelab:9200
+      - IDM_ADMIN_PASSWORD={ADMIN_PASSWORD}
 
   n8n:
     container_name: N8N
