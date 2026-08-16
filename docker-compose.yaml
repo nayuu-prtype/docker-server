@@ -38,6 +38,9 @@ services:
       - OC_JWT_SECRET=segredo-super-seguro-jwt-opencloud-12345
       - OC_TRANSFER_SECRET=segredo-super-seguro-transfer-opencloud-12345
       - OC_MACHINE_AUTH_API_KEY=segredo-super-seguro-api-opencloud-12345
+      - OC_SYSTEM_USER_ID=4c510ba1-21c0-43e0-a21a-b0f3e82449b5
+      - OC_SYSTEM_USER_API_KEY=segredo-super-seguro-api-opencloud-12345
+      - OC_STORAGE_USERS_MOUNT_ID=4c510ba1-21c0-43e0-a21a-b0f3e82449b5
 
   n8n:
     container_name: N8N
