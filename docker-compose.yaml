@@ -56,3 +56,5 @@ services:
 
 volumes:
   n8n_data: {}
+  opencloud-config: {}
+  opencloud-data: {}
