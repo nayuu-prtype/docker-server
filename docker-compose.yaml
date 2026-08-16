@@ -35,12 +35,17 @@ services:
       - OC_OIDC_ISSUER=http://homelab:9200
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      # Segredos de comunicação interna
       - OC_JWT_SECRET=segredo-super-seguro-jwt-opencloud-12345
       - OC_TRANSFER_SECRET=segredo-super-seguro-transfer-opencloud-12345
       - OC_MACHINE_AUTH_API_KEY=segredo-super-seguro-api-opencloud-12345
+      # Identidade do sistema
       - OC_SYSTEM_USER_ID=4c510ba1-21c0-43e0-a21a-b0f3e82449b5
       - OC_SYSTEM_USER_API_KEY=segredo-super-seguro-api-opencloud-12345
-      - OC_STORAGE_USERS_MOUNT_ID=4c510ba1-21c0-43e0-a21a-b0f3e82449b5
+      # Storage & Gateway Mount IDs
+      - OC_STORAGE_USERS_MOUNT_ID=1284d238-aa92-42ce-bdc1-91342e42275f
+      - STORAGE_USERS_MOUNT_ID=1284d238-aa92-42ce-bdc1-91342e42275f
+      - GATEWAY_STORAGE_USERS_MOUNT_ID=1284d238-aa92-42ce-bdc1-91342e42275f
 
   n8n:
     container_name: N8N
