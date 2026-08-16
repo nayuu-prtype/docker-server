@@ -25,7 +25,7 @@ services:
     container_name: OpenCloud
     image: opencloudeu/opencloud-rolling:latest
     restart: unless-stopped
-    entrypoint: ["/bin/sh", "-c", "opencloud init --insecure=true || true; exec opencloud server"]
+    entrypoint: ["/bin/sh", "-c", "opencloud init --insecure=yes || true; exec opencloud server"]
     ports:
       - "9200:9200"
     volumes:
