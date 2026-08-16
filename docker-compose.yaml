@@ -27,7 +27,9 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - filebrowser_data:/data
+      - filebrowser_data:/data/cloud
+      - /:/data/mount
+      - ${HOME}:/data/home
       - filebrowser_config:/config
     restart: always
 
