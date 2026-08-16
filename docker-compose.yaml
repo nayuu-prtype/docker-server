@@ -22,6 +22,7 @@ services:
       - /:/mnt/host:ro
 
   filebrowser:
+    container_name: Filebrowser
     image: hurlenko/filebrowser
     user: "1000:1000"
     ports:
@@ -32,6 +33,16 @@ services:
       - ${HOME}:/data/home
       - filebrowser_config:/config
     restart: always
+
+  code-server:
+    container_name: Code-server
+    user: "1000:1000"
+    volumes:
+      - $HOME/.local:/home/coder/.local
+      - $HOME/.config:/home/coder/.config
+      - ./:/home/coder/project
+    environment:
+      - DOCKER_USER=$USER
 
   n8n:
     container_name: N8N
