@@ -33,7 +33,11 @@ services:
       - opencloud-data:/var/lib/opencloud
     environment:
       - OC_INSECURE=true
+      - OC_OIDC_INSECURE=true
+      - IDP_INSECURE=true
+      - PROXY_TLS=false
       - OC_URL=http://homelab:9200
+      - OC_OIDC_ISSUER=http://homelab:9200
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
 
