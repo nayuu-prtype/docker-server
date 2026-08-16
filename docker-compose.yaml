@@ -36,6 +36,8 @@ services:
       - OC_URL=http://homelab:9200
       - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - OC_JWT_SECRET=${OPENCLOUD_SECRET_KEY}
+      - OC_TRANSFER_SECRET=${OPENCLOUD_SECRET_KEY}
+      - PROXY_TRANSFER_SECRET=${OPENCLOUD_SECRET_KEY
 
   n8n:
     container_name: N8N
