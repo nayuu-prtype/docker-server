@@ -37,11 +37,6 @@ services:
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
 
-volumes:
-  opencloud-config:
-  opencloud-data:
-
-
   n8n:
     container_name: N8N
     image: n8nio/n8n:latest
