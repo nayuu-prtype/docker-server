@@ -28,8 +28,8 @@ services:
     ports:
       - "9200:9200"
     volumes:
-      - $HOME/opencloud/opencloud-config:/etc/opencloud
-      - $HOME/opencloud/opencloud-data:/var/lib/opencloud
+      - opencloud-config:/etc/opencloud
+      - opencloud-data:/var/lib/opencloud
     environment:
       - OC_INSECURE=true
       - PROXY_HTTP_ADDR=0.0.0.0:9200
