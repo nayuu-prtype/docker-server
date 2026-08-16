@@ -25,7 +25,7 @@ services:
     container_name: OpenCloud
     image: opencloudeu/opencloud-rolling:latest
     restart: unless-stopped
-    entrypoint: ["/bin/sh", "-c", "opencloud init || true; exec opencloud server"]
+    entrypoint: ["/bin/sh", "-c", "opencloud init --insecure || true; exec opencloud server"]
     ports:
       - "9200:9200"
     volumes:
@@ -33,7 +33,6 @@ services:
       - opencloud-data:/var/lib/opencloud
     environment:
       - OC_INSECURE=true
-      - PROXY_TLS=false
       - OC_URL=http://homelab:9200
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
