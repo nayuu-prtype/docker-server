@@ -36,6 +36,7 @@ services:
 
   code-server:
     container_name: Code-server
+    image: codercom/code-server:latest
     user: "1000:1000"
     volumes:
       - $HOME/.local:/home/coder/.local
