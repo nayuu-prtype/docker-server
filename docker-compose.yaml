@@ -32,6 +32,7 @@ services:
     environment:
       - OC_INSECURE=true
       - OC_URL=http://homelab:9200
+      - OC_OIDC_ISSUER=http://homelab:9200
       - PROXY_HTTP_ADDR=0.0.0.0:9200
       - IDM_ADMIN_PASSWORD=${ADMIN_PASSWORD}
 
