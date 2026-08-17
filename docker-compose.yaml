@@ -1,4 +1,16 @@
 services:
+  caddy:
+    container_name: Caddy
+    image: caddy:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
   homarr:
     container_name: Homarr
     image: ghcr.io/homarr-labs/homarr:latest
@@ -37,6 +49,7 @@ services:
   code-server:
     container_name: Code-server
     image: codercom/code-server:latest
+    restart: unless-stopped
     user: "1000:1000"
     ports:
       - 9090:8080
@@ -64,3 +77,5 @@ volumes:
   n8n_data: {}
   filebrowser_data: {}
   filebrowser_config: {}
+  caddy_data: {}
+  caddy_config: {}
